@@ -9,11 +9,11 @@ require 'wikidata/fetcher'
 require 'mediawiki_api'
 
 def members
-  morph_api_url = 'https://api.morph.io/andylolz/gibraltar-wiki-current/data.json'
+  morph_api_url = 'https://api.morph.io/andylolz/gibraltar-wikipedia/data.json'
   morph_api_key = ENV["MORPH_API_KEY"]
   result = RestClient.get morph_api_url, params: {
     key: morph_api_key,
-    query: "select DISTINCT(name) AS wikiname from data"
+    query: "select DISTINCT(wikipedia_name) AS wikiname from data"
   }
   JSON.parse(result, symbolize_names: true)
 end
